@@ -1,0 +1,50 @@
+import React from 'react'
+
+class Siamount extends React.Component
+{
+    state={
+        principal:'',
+        rate:'',
+        time:'',
+        si:'',
+        amount:''
+    }
+    
+     handleChange=(e)=>{
+         this.setState({[e.target.name]:[e.target.value]})
+     }
+
+     
+     siResult=(e)=>{
+         let si='SI is '+((this.state.principal*this.state.rate*this.state.time)/100);
+         this.setState({result:si})
+     }
+     amountResult=(e)=>{
+         let amount='Amount is '+(((this.state.principal*this.state.rate*this.state.time)/100)+(this.state.principal));
+         this.setState({result:amount})
+
+     }
+
+
+    render(){
+        return(
+            <div>
+                Principal : <input type='number' name='principal' onChange={this.handleChange}/>
+                <br></br>
+                Rate : <input type='number' name='rate' onChange={this.handleChange}/>
+                <br></br>
+                Time : <input type='number' name='time' onChange={this.handleChange}/>
+                <br></br>
+                <input type='button' value='si' onClick={this.siResult}/>
+                <br></br>
+                <input type='button' value='amount' onClick={this.amountResult}/>
+                <br></br>
+                <h2 style={{color: "red",backgroundColor: "lightblue"}}>{this.state.result}</h2>
+            </div>
+
+        );
+    }
+
+}
+
+export default Siamount
